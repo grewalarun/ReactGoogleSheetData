@@ -25,22 +25,31 @@ class AddNew extends Component {
         axios({
             method: "Post",
             url:
-              'https://sheets.googleapis.com/v4/spreadsheets',
-            headers: {
-              
-            },
+              //'https://sheets.googleapis.com/v4/spreadsheets/1A0ELERdzzr24yOkZ_c9QG4Ll45qA7ancPA2V2a9Zc9k'
+              'https://sheets.googleapis.com/v4/spreadsheets/1A0ELERdzzr24yOkZ_c9QG4Ll45qA7ancPA2V2a9Zc9k/values/A1:append?',
+              headers: { 'Content-Type': 'application/json' },
+             
             params: {
-                spreadsheetId: '1A0ELERdzzr24yOkZ_c9QG4Ll45qA7ancPA2V2a9Zc9k',
-                range: 'Sheet1',
-                key: 'AIzaSyD4pOR9W_o3SL7CqMqVkQnpduIsMidQnfk',
-                valueInputOption: 'USER_ENTERED',
-                access_token: "ya29.a0Ae4lvC2ttBHhmTMmzF8EWtYwRCekuH8QTN2oneWjZAB7x5wO-FnKj6u8LMisxaVuiiXr24BGSuW3zUqnaTvvmDScBNNE3vkjOR8AyN489DsNAO04uS1zj_uczNba6xldWeHR40-1bH5knjdkiPRA9yXJyYRq1rP_WY692L_3xlE",
-                values: [
-                    "BBB",
-                    2020,
-                    "url or link"
-                  ]
-            }
+                // spreadsheetId: '1A0ELERdzzr24yOkZ_c9QG4Ll45qA7ancPA2V2a9Zc9k',
+                // range: 'Sheet1',
+                // apiKey: 'AIzaSyD4pOR9W_o3SL7CqMqVkQnpduIsMidQnfk',
+                valueInputOption:'USER_ENTERED',
+                responseDateTimeRenderOption:'FORMATTED_STRING',
+                includeValuesInResponse:'true',
+                responseValueRenderOption:'FORMATTED_VALUE',
+                insertDataOption:'INSERT_ROWS',
+                alt:'json',
+                access_token:'ya29.a0Ae4lvC3LDWYPihU60gVX7SixTyZHpOvV_rxb3TRRlNmC7qFJtlsJQSLg_vLKlWlHyRDB9YYyRV8HGhSOfdOF4lpAdqxbITpy50--X-ujB_J3UlH9C8MuOgqBYhssKTmQ6ewoiXwkJ_J9PSiqGu30x_JoaHjOwZZUAAc',
+                // // access_token: "ya29.a0Ae4lvC2ttBHhmTMmzF8EWtYwRCekuH8QTN2oneWjZAB7x5wO-FnKj6u8LMisxaVuiiXr24BGSuW3zUqnaTvvmDScBNNE3vkjOR8AyN489DsNAO04uS1zj_uczNba6xldWeHR40-1bH5knjdkiPRA9yXJyYRq1rP_WY692L_3xlE",
+                // values: [
+                //     "BBB",
+                //     2020,
+                //     "url or link"
+                //   ]
+                
+            },
+            data: { majorDimension: "ROWS", range: "A1", values: [[event.target.formMovieName.value,event.target.formMovieYear.value,event.target.formPoster.value]] }
+            
           })
             .then((response) => {
                 console.log(response)
